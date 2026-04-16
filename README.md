@@ -194,4 +194,4 @@ All content is driven from MongoDB. To update:
 
 ---
 
-Built with ❤️ by **Harsh Masurkar**
+Built by **Harsh Masurkar**
