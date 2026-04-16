@@ -1,0 +1,307 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono&display=swap');
+
+:root {
+  --color-bg: #0f0f0f;
+  --color-text: #f0f0f0;
+  --color-text-muted: #888888;
+  --color-border: #222222;
+  --color-accent: #00ff66;
+  /* Green matching dvdrod availability */
+  --neon-glow: rgba(0, 255, 102, 0.6);
+}
+
+[data-theme='light'] {
+  --color-bg: #f9f9f9;
+  --color-text: #111111;
+  --color-text-muted: #666666;
+  --color-border: #dddddd;
+  --color-accent: #00aa44;
+  --neon-glow: rgba(0, 170, 68, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #000;
+}
+
+/* ─── Typography & Utilities ─── */
+.dvdrod-hero-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(4rem, 15vw, 16rem);
+  line-height: 0.85;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.neon-hover {
+  transition: all 0.3s ease;
+}
+
+.neon-hover:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
+}
+
+/* ─── Sticky Navbar ─── */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  z-index: 1000;
+  border-radius: 0;
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#nav.scrolled {
+  top: 20px;
+  width: calc(100% - 80px);
+  max-width: 1000px;
+  background-color: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 12px 32px;
+  border-radius: 100px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='light'] #nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -1px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover {
+  color: var(--color-text);
+  transform: scale(1.1);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.theme-btn:hover {
+  color: var(--color-text);
+}
+
+.footer-hero-link:hover {
+  opacity: 0.8;
+}
+
+/* ─── Infinite Marquee ─── */
+.marquee-wrap {
+  width: 100vw;
+  overflow: hidden;
+  background: var(--color-bg);
+  padding: 10px 0;
+  display: flex;
+  margin-left: -40px;
+  /* Offset parent padding */
+  margin-top: 60px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 25s linear infinite;
+  will-change: transform;
+}
+
+.mq-item {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-text-muted);
+  padding: 0 56px;
+}
+
+.mq-item::after {
+  content: "✦";
+  position: absolute;
+  margin-left: 48px;
+  color: #444;
+}
+
+.mq-item:last-child::after {
+  content: "";
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.dvdrod-section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 12rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: #e5e5e5;
+  letter-spacing: -0.02em;
+  transform: scaleX(1.2);
+  transform-origin: left;
+}
+
+.dvdrod-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.dvdrod-pill.active {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.dvdrod-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.dvdrod-link:hover {
+  color: #fff;
+}
